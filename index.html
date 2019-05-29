@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" contnet="John Bent">
+<meta http-equiv="Cache-control" content="public">
+<title>Historic Hurricane Tracks</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTYeRHalwtEj_byU28DBJzQLmmhZUn-uU"></script>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/hStyles.min.css" type="text/css">
+</head>
+<body>
+
+<div id="wrap">
+<!-- Header -->
+<header>
+<!--Logo-->
+<span id="logo">
+<span id="title">Historical Hurricane Data</span> <img src="img/h_icon.png" class="h_icon"/>
+</span>
+<!-- DropDown -->
+<span class="basinList">
+<span class="sel">Select a basin: </span>
+<select id="basin">
+	<option>Select a basin</option>
+	<option value="NA.min.json" data-num="1" selected>North Atlantic</option>
+	<option value="EP.min.json" data-num="0">Eastern Pacific</option>
+	<option value="NI.min.json" data-num="2">Northern Indian</option>
+	<option value="SA.min.json" data-num="3">South Atlantic</option>
+	<option value="SI.min.json" data-num="4">South Indian</option>
+	<option value="SP.min.json" data-num="5">South Pacific</option>
+	<option value="WP.min.json" data-num="6">West Pacific</option>
+</select>
+</span>
+<!--Years dropdown - populates with years pulled form json files -->
+<span class="yearsList">
+<span class="sel">Select a Year: </span>
+<select id="years">
+	<option >Select a year</option>
+</select>
+</span>
+
+<!-- Button to clear map -->
+<span id="clear">Clear Map</span>
+
+</header>
+
+<!-- Year and Storm Headers - populates with data from json files -->
+
+<div id="storm">
+<span id="b_info">Basin: <span id="b_selected"></span></span>
+<span id="y_info">Year: <span id="y_selected"></span></span>
+<span id="s_info">Storm: <span id="s_selected"></span></span>
+
+<div id="orig"></div>
+<div id="dSrc">Data Source: National Oceanic and Atmospheric Administration</div>
+</div>
+
+<div id="hideStorm">Hide Storm Data</div>
+<!-- Sidebar with Storm names - actual not a sidebar in layout but I kept the selector as sidebar -->
+
+<div id="sidebar">
+
+<span id="sidebar-header"><span class="note">Click a storm name to view associated data.</span></span>
+
+<ul id="storm-toggle">
+
+</ul>
+</div>
+
+<!-- Wrapper for map and selected storm data -->
+<div id="map-data">
+<!-- container for map -->
+<div id="gmap"></div>
+<!-- Storm Intensity Key -->
+<div id="key">
+<span class="k tropDep">Tropical Depression</span>
+<span class="k tropStrm">Tropical Storm</span>
+<span class="k hur">Hurricane</span>
+<span class="k majHur">Major Hurricane</span>
+</div>
+
+<!-- Hurricane Data Container - populates with data from JSON file -->
+<div id="hurr"></div>
+</div>
+
+</div>
+
+<script src="js/hurr.min.js"></script>
+</body>
+</html>
